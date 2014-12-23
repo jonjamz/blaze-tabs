@@ -163,11 +163,11 @@ These block helpers require an array of tabs to be passed into them:
 
 Each tab in the array exists as an object with the following properties and methods:
 
-Field     | Type | Required
-:---------|:------|:---------
-name | *String* | **Yes**
-slug | *String* | **Yes**
-onRender | *Function* | No
+Field     | Type       | Required
+:---------|:-----------|:---------
+name      | *String*   | **Yes**
+slug      | *String*   | **Yes**
+onRender  | *Function* | No
 
 ```javascript
 var tabs = [
