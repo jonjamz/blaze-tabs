@@ -129,7 +129,7 @@ Enabling this functionality is simple:
 
 * Make sure you specify an `activeTab` helper in the parent template, as we did in the first example.
 * Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`
-* Include `{{trackActiveTab activeTab}}` near the top of your tabbed interface template (see below).
+* Include `{{trackActiveTab activeTab}}` at the top of your tabbed interface template (see below).
 * The value of `activeTab` can be either:
   * **slug** (a string, the name of the currently active slug)
   * **tab** (an object, including at least the `slug` property)
@@ -141,7 +141,7 @@ Usually, you never need to update your array of tabs. But if you do, ReactiveTab
 Here's what you need to change to work with dynamic tabs:
 
 * Instead of using a normal array for your `tabs` helper, use a [ReactiveArray](https://github.com/meteortemplates/array/) instance.
-* Near the top of your tabbed interface template, add `{{trackTabs tabs}}` (see below).
+* At the top of your tabbed interface template, add `{{trackTabs tabs}}` (see below).
 * Consider separating your tab content into separate templates, named by slug, and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
 * If you don't add reactivity to your tab content that somehow syncs it with the state of your `tabs` array, you'll need to manually update the DOM *before* you change the value of the tab array.
 
