@@ -50,10 +50,6 @@
           if activeTab?.onRender?
             activeTab.onRender();
 
-        # If no active tab specified, default to the first tab
-        if self._activeTab.get()?.slug is null
-          self._activeTab.set(tabs[0].slug)
-
       helpers = {
         activeTab: (slug) ->
           if Template.instance()._activeTab.get()?.slug is slug
