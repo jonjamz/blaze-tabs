@@ -41,7 +41,7 @@
         self.autorun ->
           activeTab = self._activeTab.get()
           ($ self.findAll('.tabs-content')).hide()
-          ($ self.find("[data-tab='#{activeTab}']")).show()
+          ($ self.find("[data-tab='#{activeTab.slug}']")).show()
           if options?.onChange?
             options.onChange(activeTab.slug)
           if activeTab?.onRender?
