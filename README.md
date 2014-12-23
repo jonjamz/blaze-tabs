@@ -56,16 +56,15 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
 
 ```handlebars
 <template name="myTemplate">
+
   <!-- Use `name` to add a custom class to the outer container -->
   {{#basicTabs name="" tabs=tabs}}
-
     <!--
       Note:
 
       Each tabbed section is wrapped in a blank <div>.
       These sections correspond with the order of the tabs you specified.
     -->
-
     <div>
       <h2>People</h2>
       <button class="add-people">
@@ -88,6 +87,7 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
     </div>
 
   {{/basicTabs}}
+  
 </template>
 ```
 
