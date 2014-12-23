@@ -1,5 +1,5 @@
 
-@ReactiveTabs = do ->
+@ReactiveTabs = ReactiveTabs = do ->
 
   createInterface = (options) ->
 
