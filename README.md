@@ -15,32 +15,6 @@ This package works on the client-side only.
 Usage
 -----
 
-#### How to specify tabs
-
-Tabbed interfaces created with this package exist as template block helpers.
-
-These block helpers require an array of tabs to be passed into them:
-
-```handlebars
-{{#yourTabbedInterface tabs=thisIsTheArrayOfTabs}}
-  <!-- Content -->
-{{/yourTabbedInterface}}
-```
-
-Each tab in the array exists as an object with a **name** and a **slug** property:
-
-```javascript
-var tabs = [
-  { name: 'People', slug: 'people' },
-  { name: 'Places', slug: 'places' },
-  { name: 'Things', slug: 'things' }
-];
-```
-
-Slugs are generally URL-compatible strings without capital letters or spaces.
-
-**You must provide both.**
-
 #### Basic use
 
 Use the included `basicTabs` template. First, register it with ReactiveTabs:
@@ -169,6 +143,32 @@ Now you can go...
 {{/yourTabbedInterface}}
 ```
 Provided that `tabsHelper` (in this example) has the array of tab objects.
+
+#### How to specify tabs
+
+Tabbed interfaces created with this package exist as template block helpers.
+
+These block helpers require an array of tabs to be passed into them:
+
+```handlebars
+{{#yourTabbedInterface tabs=thisIsTheArrayOfTabs}}
+  <!-- Content -->
+{{/yourTabbedInterface}}
+```
+
+Each tab in the array exists as an object with a **name** and a **slug** property:
+
+```javascript
+var tabs = [
+  { name: 'People', slug: 'people' },
+  { name: 'Places', slug: 'places' },
+  { name: 'Things', slug: 'things' }
+];
+```
+
+Slugs are generally URL-compatible strings without capital letters or spaces.
+
+**You must provide both.**
 
 Contributors
 ------------
