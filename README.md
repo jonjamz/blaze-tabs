@@ -85,6 +85,7 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
         Add Things
       </button>
     </div>
+    
   {{/basicTabs}}
   
 </template>
