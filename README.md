@@ -162,10 +162,12 @@ These block helpers require an array of tabs to be passed into them:
 ```
 
 Each tab in the array exists as an object with the following properties and methods:
-**name** | (*String*, required) 
----------|--------------------
-**slug** | (*String*, required)
-**onRender** | (*Function*, optional)
+
+Field     | Type | Required
+:---------|:------|:---------
+name | *String* | **Yes**
+slug | *String* | **Yes**
+onRender | *Function* | No
 
 ```javascript
 var tabs = [
