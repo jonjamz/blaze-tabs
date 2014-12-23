@@ -131,8 +131,8 @@ Enabling this functionality is simple:
 * Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`
 * Include `{{trackActiveTab activeTab}}` in your tabbed interface template to enable this.
 * The value of `activeTab` can be either:
-  * **slug** (a string)
-  * **tab** (an object, including at least the `slug` property).
+  * **slug** (a string, the name of the currently active slug)
+  * **tab** (an object, including at least the `slug` property)
 
 **Changing the number or order of tabs dynamically**
 
