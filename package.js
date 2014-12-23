@@ -1,7 +1,7 @@
 Package.describe({
   name: 'templates:tabs',
   summary: 'Reactive tabbed interfaces compatible with routing.',
-  version: '1.0.0',
+  version: '1.1.0',
   git: 'https://github.com/meteortemplates/tabs.git'
 });
 
@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'tracker',
     'check',
     'coffeescript',
-    'templates:array'
+    'templates:array@1.0.0'
   ], 'client');
   api.addFiles('templates:tabs.coffee');
   api.addFiles('templates:tabs.css');

@@ -28,6 +28,7 @@ random@1.0.2
 reactive-var@1.0.4
 retry@1.0.2
 spacebars-compiler@1.0.4
+templates:array@1.0.0
 templates:tabs@1.0.0
 templating@1.0.10
 tinytest@1.0.4
