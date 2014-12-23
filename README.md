@@ -161,10 +161,10 @@ These block helpers require an array of tabs to be passed into them:
 {{/yourTabbedInterface}}
 ```
 
-Each tab in the array exists as an object with the following properties:
-* **name** (required)
-* **slug** (required)
-* **onRender** (optional)
+Each tab in the array exists as an object with the following properties and methods:
+* **name** (*String*, required)
+* **slug** (*String*, required)
+* **onRender** (*Function*, optional)
 
 ```javascript
 var tabs = [
