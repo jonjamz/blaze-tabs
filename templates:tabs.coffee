@@ -24,6 +24,8 @@
 
         if self.data.activeTab
           activeTab = self.data.activeTab # should use slug for routes compatibility
+        else 
+          activeTab = self.data.tabs[0]
 
         self._tabs = new ReactiveArray(self.data.tabs)
         self._activeTab = new Blaze.ReactiveVar(activeTab)
@@ -40,20 +42,21 @@
         # Sync corresponding content areas with active tab
         self.autorun ->
           activeTab = self._activeTab.get()
+          slug = activeTab?.slug
           ($ self.findAll('.tabs-content')).hide()
-          ($ self.find("[data-tab='#{activeTab.slug}']")).show()
+          ($ self.find("[data-tab='#{slug}']")).show()
           if options?.onChange?
-            options.onChange(activeTab.slug)
+            options.onChange(slug)
           if activeTab?.onRender?
             activeTab.onRender();
 
         # If no active tab specified, default to the first tab
-        if self._activeTab.get().slug is null
+        if self._activeTab.get()?.slug is null
           self._activeTab.set(tabs[0].slug)
 
       helpers = {
         activeTab: (slug) ->
-          if Template.instance()._activeTab.get().slug is slug
+          if Template.instance()._activeTab.get()?.slug is slug
             return 'active'
       }
 
