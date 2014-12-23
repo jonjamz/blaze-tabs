@@ -22,7 +22,7 @@ Use the included `basicTabs` template. First, register it with ReactiveTabs:
 ```javascript
 ReactiveTabs.createInterface({
   template: 'basicTabs',
-  onChange: function (slug) {
+  onChange: function (slug, templateInstance) {
     // Do whatever you want here--this runs every time the tab changes, across all instances of this template
     console.log('Tab has changed:', slug);
   }
@@ -38,8 +38,8 @@ Template.myTemplate.helpers({
     return [
       { name: 'People', slug: 'people' },
       { name: 'Places', slug: 'places' },
-      { name: 'Things', slug: 'things', onRender: function() {
-        // This runs every time this tab's content renders, unique to the instance this array is provided to
+      { name: 'Things', slug: 'things', onRender: function(templateInstance) {
+        // This runs every time this tab's content renders, unique to the instance(s) using this array
         alert("Initialize things.");
       }}
     ];

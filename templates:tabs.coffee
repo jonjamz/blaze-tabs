@@ -70,14 +70,14 @@
 
           # Moved onChange to before render
           if options?.onChange?
-            options.onChange(slug)
+            options.onChange(slug, self)
 
           ($ self.findAll('.tabs-content')).hide()
           ($ self.find("[data-tab='#{slug}']")).show()
 
           # Call render callback for this slug
           if renderCallbacks[slug]?.onRender?
-            renderCallbacks[slug].onRender()
+            renderCallbacks[slug].onRender(self)
 
       helpers = {
         activeTab: (slug) ->
