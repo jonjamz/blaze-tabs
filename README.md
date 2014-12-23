@@ -38,7 +38,9 @@ Template.myTemplate.helpers({
     return [
       { name: 'People', slug: 'people' },
       { name: 'Places', slug: 'places' },
-      { name: 'Things', slug: 'things' }
+      { name: 'Things', slug: 'things', onRender: function() {
+        alert("Initialize things.");
+      }}
     ];
   },
   activeTab: function () {
@@ -156,13 +158,15 @@ These block helpers require an array of tabs to be passed into them:
 {{/yourTabbedInterface}}
 ```
 
-Each tab in the array exists as an object with a **name** and a **slug** property:
+Each tab in the array exists as an object with a **name** and a **slug** property, as well as an optional **onRender** function:
 
 ```javascript
 var tabs = [
   { name: 'People', slug: 'people' },
   { name: 'Places', slug: 'places' },
-  { name: 'Things', slug: 'things' }
+  { name: 'Things', slug: 'things', onRender: function() {
+    alert("Initialize things.");
+  }}
 ];
 ```
 
