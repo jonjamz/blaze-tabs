@@ -1,8 +1,8 @@
 Package.describe({
   name: 'templates:tabs',
-  summary: 'Simple reactive tabbed interfaces.',
+  summary: 'Build powerful, flexible, and reactive tabbed interfaces.',
   version: '1.0.0',
-  git: ' /* Fill me in! */ '
+  git: 'https://github.com/meteortemplates/tabs.git'
 });
 
 Package.onUse(function(api) {
