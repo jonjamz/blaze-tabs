@@ -48,7 +48,7 @@
           if options?.onChange?
             options.onChange(slug)
           if activeTab?.onRender?
-            activeTab.onRender();
+            activeTab.onRender()
 
       helpers = {
         activeTab: (slug) ->
