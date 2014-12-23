@@ -142,7 +142,7 @@ Here's what you need to change to work with dynamic tabs:
 
 * Instead of using a normal array for your `tabs` helper, use a [ReactiveArray](https://github.com/meteortemplates/array/) instance.
 * In your tabbed interface, add `{{trackTabs tabs}}`.
-* Consider splitting your tab content into separate templates and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
+* Consider splitting your tab content into separate templates, named by slug, and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
 * If you don't make your tab content reactive, you'll need to manually update the DOM *before* you change the value of the tab array.
 
 #### Roll your own template
