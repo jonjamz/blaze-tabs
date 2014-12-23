@@ -44,10 +44,13 @@ Template.myTemplate.helpers({
     ];
   },
   activeTab: function () {
-    // This is optional.
-    // If you don't provide an active tab, the first one is selected by default.
-    // You can also set this using an Iron Router param if you want--
-    // or a Session variable, or any reactive value from anywhere.
+    /* This is optional.
+     * If you don't provide an active tab, the first one is selected by default.
+     * You can also set this using an Iron Router param if you want--
+     * or a Session variable, or any reactive value from anywhere.
+     *
+     * See the `advanced use` section below to learn about dynamic tabs.
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
   }
 });
 ```
@@ -91,6 +94,57 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
 </template>
 ```
 
+#### Advanced Use
+
+Try the included `dynamicTabs` template. Just register it with ReactiveTabs first.
+
+```javascript
+ReactiveTabs.createInterface({
+  template: 'dynamicTabs',
+  onChange: function (slug) {
+    // Do whatever you want here--this fires every time the tab changes
+    console.log('Tab has changed:', slug);
+  }
+})
+```
+
+View that template's source code, and note this:
+
+```handlebars
+{{trackTabs tabs}}
+{{trackActiveTab activeTab}}
+```
+
+These helpers allow us to sync data from the parent with internal data in the tabbed interface.
+
+This presents us with some interesting abilities, detailed below.
+
+**Changing active tab from the parent template**
+
+Sometimes, you want to change active tab reactively--for example, based on a route.
+
+To do this, you need your ReactiveTabs interface to respond when you change your `activeTab` helper in the parent template.
+
+Enabling this functionality is simple:
+
+* Make sure you specify an `activeTab` helper in the parent template, as we did in the example above.
+* Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`
+* Include `{{trackActiveTab activeTab}}` in your tabbed interface template to enable this.
+* The value of `activeTab` can be either:
+  * **slug** (a string)
+  * **tab** (an object, including at least the `slug` property).
+
+**Changing the number or order of tabs dynamically**
+
+Usually, you never need to update your array of tabs. But if you do, ReactiveTabs can handle it.
+
+Here's what you need to change to work with dynamic tabs:
+
+* Instead of using a normal array for your `tabs` helper, use a [ReactiveArray](https://github.com/meteortemplates/array/) instance.
+* In your tabbed interface, add `{{trackTabs tabs}}`.
+* Consider splitting your tab content into separate templates and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
+* If you don't make your tab content reactive, you'll need to manually update the DOM *before* you change the value of the tab array.
+
 #### Roll your own template
 
 Turn any compatible template into a tabbed interface by calling `ReactiveTabs.createInterface()`.
@@ -102,6 +156,10 @@ Follow this model:
 <template name="yourTabbedInterface">
 
   <div class="yourTabbedInterface-container">
+
+    <!-- These are optional if you want to track parent data (see above) -->
+    {{trackTabs tabs}}
+    {{trackActiveTab activeTab}}
 
     <!-- You can put the tabs anywhere and style them however you want! -->
     <ul class="tabs-list">

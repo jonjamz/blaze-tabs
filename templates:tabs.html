@@ -13,3 +13,23 @@
   </div>
 
 </template>
+
+<template name="dynamicTabs">
+  <div class="dynamicTabs-container {{name}}">
+
+    <!-- These keep the instance synced with the parent's reactive data -->
+    {{trackTabs tabs}}
+    {{trackActiveTab activeTab}}
+
+    <ul class="tabs-list">
+      {{#each tabs}}
+        <li class="tab-item {{activeTab slug}}">{{name}}</li>
+      {{/each}}
+    </ul>
+    <div class="tabs-content-container">
+      {{> UI.contentBlock}}
+    </div>
+
+  </div>
+
+</template>

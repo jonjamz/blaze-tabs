@@ -1,8 +1,10 @@
-.basicTabs-container .tabs-list {
+.basicTabs-container .tabs-list,
+.dynamicTabs-container .tabs-list {
   text-align: left;
   width: 100%;
 }
-.basicTabs-container .tabs-list .tab-item {
+.basicTabs-container .tabs-list .tab-item,
+.dynamicTabs-container .tabs-list .tab-item {
   font-weight: 600;
   font-size: 13px;
   display: inline-block;
@@ -11,7 +13,8 @@
   list-style: none;
   cursor: pointer;
 }
-.basicTabs-container .tabs-list .tab-item.active {
+.basicTabs-container .tabs-list .tab-item.active,
+.dynamicTabs-container .tabs-list .tab-item.active {
   border-radius: top 5px;
   border: 1px solid #ddd;
   border-bottom: none;
@@ -20,13 +23,16 @@
   background-color: #fff;
   color: #333;
 }
-.basicTabs-container .tabs-content-container {
+.basicTabs-container .tabs-content-container,
+.dynamicTabs-container .tabs-content-container {
   padding: 15px;
   border-top: 1px solid #ddd;
 }
-.basicTabs-container .tabs-content {
+.basicTabs-container .tabs-content,
+.dynamicTabs-container .tabs-content {
   display: none;
 }
-.basicTabs-container .tabs-content.active {
+.basicTabs-container .tabs-content.active,
+.dynamicTabs-container .tabs-content.active {
   display: block;
 }

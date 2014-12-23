@@ -15,6 +15,8 @@ Package.onUse(function(api) {
     'templates:array'
   ], 'client');
   api.addFiles('templates:tabs.coffee');
+  api.addFiles('templates:tabs.css');
+  api.addFiles('templates:tabs.html');
 });
 
 Package.onTest(function(api) {
