@@ -1,9 +1,7 @@
 About
 -----
 
-This package was designed to make building a tabbed interface **trivial**.
-
-You can build any number of custom tabbed interfaces within the same app--no problem.
+Build any tabbed interface *really easily*.
 
 All instances of tabbed interfaces will be self-contained and individually reactive.
 
