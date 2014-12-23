@@ -11,7 +11,8 @@ Package.onUse(function(api) {
     'templating',
     'tracker',
     'check',
-    'coffeescript'
+    'coffeescript',
+    'templates:array'
   ], 'client');
   api.addFiles('templates:tabs.coffee');
 });
