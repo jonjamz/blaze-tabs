@@ -85,9 +85,9 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
         Add Things
       </button>
     </div>
-    
+
   {{/basicTabs}}
-  
+
 </template>
 ```
 
@@ -114,9 +114,9 @@ Follow this model:
     <div class="tabs-content-container">
       {{> UI.contentBlock}}
     </div>
-    
+
   </div>
-  
+
 </template>
 
 ```
@@ -161,7 +161,10 @@ These block helpers require an array of tabs to be passed into them:
 {{/yourTabbedInterface}}
 ```
 
-Each tab in the array exists as an object with a **name** and a **slug** property, as well as an optional **onRender** function:
+Each tab in the array exists as an object with the following properties:
+* **name** (required)
+* **slug** (required)
+* **onRender** (optional)
 
 ```javascript
 var tabs = [
@@ -173,9 +176,9 @@ var tabs = [
 ];
 ```
 
-Slugs are generally URL-compatible strings without capital letters or spaces.
+Slugs should be URL-compatible strings without capital letters or spaces.
 
-**You must provide both.**
+**To be extra clear: you must provide both name and slug.**
 
 Contributors
 ------------
