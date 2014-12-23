@@ -1,7 +1,10 @@
 About
 -----
 
-Build any tabbed interface *really easily*.
+Build any tabbed interface:
+* *really easily*.
+* *with custom templates*.
+* *with router integration*.
 
 All instances of tabbed interfaces will be self-contained and individually reactive.
 
