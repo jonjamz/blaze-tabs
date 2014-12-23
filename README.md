@@ -85,7 +85,6 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
         Add Things
       </button>
     </div>
-
   {{/basicTabs}}
   
 </template>
@@ -100,6 +99,7 @@ Follow this model:
 ```handlebars
 
 <template name="yourTabbedInterface">
+
   <div class="yourTabbedInterface-container">
 
     <!-- You can put the tabs anywhere and style them however you want! -->
@@ -113,7 +113,9 @@ Follow this model:
     <div class="tabs-content-container">
       {{> UI.contentBlock}}
     </div>
+    
   </div>
+  
 </template>
 
 ```
