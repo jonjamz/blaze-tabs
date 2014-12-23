@@ -14,7 +14,7 @@
       events = {}
 
       events['click .tab-item'] = (e, t) ->
-        t._activeTab.set(this.slug)
+        t._activeTab.set(this)
 
       created = ->
         self = this
@@ -43,15 +43,17 @@
           ($ self.findAll('.tabs-content')).hide()
           ($ self.find("[data-tab='#{activeTab}']")).show()
           if options?.onChange?
-              options.onChange(activeTab)
+            options.onChange(activeTab.slug)
+          if activeTab?.onRender?
+            activeTab.onRender();
 
         # If no active tab specified, default to the first tab
-        if self._activeTab.get() is null
+        if self._activeTab.get().slug is null
           self._activeTab.set(tabs[0].slug)
 
       helpers = {
         activeTab: (slug) ->
-          if Template.instance()._activeTab.get() is slug
+          if Template.instance()._activeTab.get().slug is slug
             return 'active'
       }
 
