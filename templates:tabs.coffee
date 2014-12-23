@@ -18,26 +18,44 @@
 
       created = ->
         self = this
-        activeTab = null
         check(self.data.tabs, Array)
         check(self.data.activeTab, Match.Optional(String))
 
+        # Init--set first tab if no specified active tab
         if self.data.activeTab
-          activeTab = self.data.activeTab # should use slug for routes compatibility
-        else 
+          activeTab = self.data.activeTab
+        else
           activeTab = self.data.tabs[0]
 
+        # Set up reactive data structures
         self._tabs = new ReactiveArray(self.data.tabs)
         self._activeTab = new Blaze.ReactiveVar(activeTab)
 
+        # Work with reactive data structures
+        self.setTabs = (array) ->
+          if Match.test(array, Array)
+            self._tabs.set(array)
+
+        self.setActiveTab = (tab) ->
+          if Match.test(tab, Match.ObjectIncluding({
+            name: String
+            slug: String
+          }))
+
+            self._activeTab.set(tab)
+
+        self.isActiveSlug = (slug) ->
+          self._activeTab.get()?.slug is slug
+
       rendered = ->
         self = this
-        tabs = self._tabs.get()
         contentBlocks = self.findAll('.tabs-content-container > div')
 
         # Add data-tab attribute to all tabbed content areas
-        for tab, i in tabs
-          ($ contentBlocks[i]).addClass('tabs-content').attr('data-tab', tab.slug)
+        self.autorun ->
+          tabs = self._tabs.get()
+          for tab, i in tabs
+            ($ contentBlocks[i]).addClass('tabs-content').attr('data-tab', tab.slug)
 
         # Sync corresponding content areas with active tab
         self.autorun ->
@@ -52,8 +70,15 @@
 
       helpers = {
         activeTab: (slug) ->
-          if Template.instance()._activeTab.get()?.slug is slug
+          if Template.instance().isActiveSlug(slug)
             return 'active'
+
+        # Use these trackers if you want to reactively change tabs/activeTab from the outside
+        trackActiveTab: (activeTab) ->
+          Template.instance().setActiveTab(activeTab)
+
+        trackTabs: (tabs) ->
+          Template.instance().setTabs(tabs)
       }
 
       # Put it all together!
