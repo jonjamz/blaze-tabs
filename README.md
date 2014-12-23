@@ -119,7 +119,7 @@ These helpers allow us to sync data from the parent with internal data in the ta
 
 This presents us with some interesting abilities, detailed below.
 
-**Changing active tab from the parent template**
+**1. Changing active tab from the parent template**
 
 Sometimes, you want to change active tab reactively--for example, based on a route.
 
@@ -134,7 +134,7 @@ Enabling this functionality is simple:
   * **slug** (a string, the name of the currently active slug)
   * **tab** (an object, including at least the `slug` property)
 
-**Changing the number or order of tabs dynamically**
+**2. Changing the number or order of tabs dynamically**
 
 Usually, you never need to update your array of tabs. But if you do, ReactiveTabs can handle it.
 
@@ -145,7 +145,7 @@ Here's what you need to change to work with dynamic tabs:
 * Consider separating your tab content into separate templates, named by slug, and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
 * If you don't add reactivity to your tab content that somehow syncs it with the state of your `tabs` array, you'll need to manually update the DOM *before* you change the value of the tab array.
 
-> If easier dynamic tabs becomes a much-requested feature, we can work more on it.
+> If easier dynamic tabs becomes a much-requested feature, we can optimize the package more for that use.
 
 #### Roll your own template
 
