@@ -1,0 +1,15 @@
+<template name="basicTabs">
+  <div class="basicTabs-container {{name}}">
+
+    <ul class="tabs-list">
+      {{#each tabs}}
+        <li class="tab-item {{activeTab slug}}">{{name}}</li>
+      {{/each}}
+    </ul>
+    <div class="tabs-content-container">
+      {{> UI.contentBlock}}
+    </div>
+
+  </div>
+
+</template>
