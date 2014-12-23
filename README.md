@@ -27,7 +27,7 @@ These block helpers require an array of tabs to be passed into them:
 {{/yourTabbedInterface}}
 ```
 
-Each tab in the array exists as an object with a *name* and a *slug* property:
+Each tab in the array exists as an object with a **name** and a **slug** property:
 
 ```javascript
 var tabs = [
@@ -39,7 +39,7 @@ var tabs = [
 
 Slugs are generally URL-compatible strings without capital letters or spaces.
 
-You **must** provide both.
+**You must provide both.**
 
 #### Basic use
 
