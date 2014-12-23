@@ -129,7 +129,7 @@ Enabling this functionality is simple:
 
 * Make sure you specify an `activeTab` helper in the parent template, as we did in the first example.
 * Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`
-* Include `{{trackActiveTab activeTab}}` in your tabbed interface template to enable this.
+* Include `{{trackActiveTab activeTab}}` anywhere in your tabbed interface template (see below).
 * The value of `activeTab` can be either:
   * **slug** (a string, the name of the currently active slug)
   * **tab** (an object, including at least the `slug` property)
