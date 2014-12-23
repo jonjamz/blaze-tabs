@@ -94,7 +94,7 @@ Finally, wrap your tabbed interface using `basicTabs` as a block helper:
 </template>
 ```
 
-#### Advanced Use
+#### Advanced use
 
 Try the included `dynamicTabs` template. Just register it with ReactiveTabs first.
 
