@@ -190,7 +190,7 @@ And then, as you saw above:
 ```javascript
 ReactiveTabs.createInterface({
   template: 'yourTabbedInterface',
-  onChange: function (slug) {
+  onChange: function (slug, templateInstance) {
     // Do whatever you want here--this fires every time the tab changes
     console.log('Tab has changed:', slug);
   }
