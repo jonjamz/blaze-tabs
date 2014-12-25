@@ -20,14 +20,16 @@ Usage
 
 #### Basic use
 
-Use the included `basicTabs` template. First, register it with ReactiveTabs:
+Try the included `basicTabs` template. First, register it with ReactiveTabs:
 
 ```javascript
 ReactiveTabs.createInterface({
   template: 'basicTabs',
-  onChange: function (slug, templateInstance) {
-    // Do whatever you want here--this runs every time the tab changes, across all instances of this template
-    console.log('Tab has changed:', slug);
+  onChange: function (slug, template) {
+    // This callback runs every time a tab changes.
+    // The `template` instance is unique per {{#basicTabs}} block.
+    console.log('[tabs] Tab has changed! Current tab:', slug);
+    console.log('[tabs] Template instance calling onChange:', template);
   }
 })
 ```
@@ -41,20 +43,23 @@ Template.myTemplate.helpers({
     return [
       { name: 'People', slug: 'people' },
       { name: 'Places', slug: 'places' },
-      { name: 'Things', slug: 'things', onRender: function(templateInstance) {
-        // This runs every time this tab's content renders, unique to the instance(s) using this array
-        alert("Initialize things.");
+      { name: 'Things', slug: 'things', onRender: function(template) {
+        // This callback runs every time this specific tab's content renders.
+        // As with `onChange`, the `template` instance is unique per block helper.
+        alert("[tabs] Things has been rendered!");
       }}
     ];
   },
   activeTab: function () {
-    /* This is optional.
-     * If you don't provide an active tab, the first one is selected by default.
-     * You can also set this using an Iron Router param if you want--
-     * or a Session variable, or any reactive value from anywhere.
-     *
-     * See the `advanced use` section below to learn about dynamic tabs.
-     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    // Use this optional helper to reactively set the active tab.
+    // All you have to do is return the slug of the tab.
+    
+    // You can set this using an Iron Router param if you want--
+    // or a Session variable, or any reactive value from anywhere.
+    
+    // If you don't provide an active tab, the first one is selected by default.
+    // See the `advanced use` section below to learn about dynamic tabs.
+    return Session.get('activeTab'); // Returns "people", "places", or "things".
   }
 });
 ```
@@ -67,10 +72,8 @@ Finally, wrap your content with the `basicTabs` block helper:
   <!-- Use `name` to add a custom class to the outer container -->
   {{#basicTabs name="" tabs=tabs}}
     <!--
-      Note:
-
-      Each tabbed section is wrapped in a blank <div>.
-      These sections correspond with the order of the tabs you specified.
+      Wrap each tabbed section in a blank `<div></div>`.
+      Sections must correspond with the order of the tabs you specified.
     -->
     <div>
       <h2>People</h2>
@@ -106,8 +109,7 @@ Try the included `dynamicTabs` template. Just register it with ReactiveTabs firs
 ReactiveTabs.createInterface({
   template: 'dynamicTabs',
   onChange: function (slug) {
-    // Do whatever you want here--this fires every time the tab changes
-    console.log('Tab has changed:', slug);
+    console.log('[tabs] Tab has changed:', slug);
   }
 })
 ```
@@ -119,7 +121,7 @@ View that template's source code, and note this:
 {{trackActiveTab activeTab}}
 ```
 
-These helpers allow us to sync data from the parent with internal data in the tabbed interface.
+These helpers allow us to sync data from the parent template with internal data in the tabbed interface.
 
 This presents us with some interesting abilities, detailed below.
 
@@ -132,11 +134,11 @@ To do this, you need your ReactiveTabs interface to respond when you change your
 Enabling this functionality is simple:
 
 * Make sure you specify an `activeTab` helper in the parent template, as we did in the first example.
-* Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`
+* Pass `activeTab` into your block helper, like `{{#dynamicTabs tabs=tabs activeTab=activeTab}}`.
 * Include `{{trackActiveTab activeTab}}` at the top of your tabbed interface template (see below).
 * The value of `activeTab` can be either:
-  * **slug** (a string, the name of the currently active slug)
-  * **tab** (an object, including at least the `slug` property)
+  * **slug** (a string, the name of the currently active slug).
+  * **tab** (an object, including at least the `slug` property).
 
 **2. Changing the number or order of tabs dynamically**
 
@@ -163,7 +165,7 @@ Follow this model:
 
   <div class="yourTabbedInterface-container">
 
-    <!-- These are optional if you want to track parent data (see above) -->
+    <!-- These are optional if you want to track parent data (see above). -->
     {{trackTabs tabs}}
     {{trackActiveTab activeTab}}
 
@@ -174,7 +176,7 @@ Follow this model:
       {{/each}}
     </ul>
 
-    <!-- Here's where the active tab will be displayed -->
+    <!-- Here's where the active tab's content will be displayed. -->
     <div class="tabs-content-container">
       {{> UI.contentBlock}}
     </div>
@@ -190,9 +192,8 @@ And then, as you saw above:
 ```javascript
 ReactiveTabs.createInterface({
   template: 'yourTabbedInterface',
-  onChange: function (slug, templateInstance) {
-    // Do whatever you want here--this fires every time the tab changes
-    console.log('Tab has changed:', slug);
+  onChange: function (slug, template) {
+    console.log('[tabs] Tab has changed:', slug);
   }
 })
 ```
@@ -202,16 +203,16 @@ Now you can go...
 ```handlebars
 {{#yourTabbedInterface tabs=tabsHelper}}
 
-  <!-- First tab's section -->
+  <!-- First tab's section. -->
   <div></div>
 
-  <!-- Second tab's section -->
+  <!-- Second tab's section. -->
   <div></div>
 
   <!-- And so on... -->
 {{/yourTabbedInterface}}
 ```
-Provided that `tabsHelper` (in this example) has the array of tab objects.
+In this example, `tabsHelper` has the array of tab objects.
 
 #### How to specify tabs
 
@@ -221,7 +222,7 @@ These block helpers require an array of tabs to be passed into them:
 
 ```handlebars
 {{#yourTabbedInterface tabs=thisIsTheArrayOfTabs}}
-  <!-- Content -->
+  <!-- Content. -->
 {{/yourTabbedInterface}}
 ```
 
@@ -237,9 +238,7 @@ onRender  | *Function* | No
 var tabs = [
   { name: 'People', slug: 'people' },
   { name: 'Places', slug: 'places' },
-  { name: 'Things', slug: 'things', onRender: function() {
-    alert("Initialize things.");
-  }}
+  { name: 'Things', slug: 'things', onRender: function() {} }
 ];
 ```
 
