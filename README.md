@@ -59,7 +59,7 @@ Template.myTemplate.helpers({
 });
 ```
 
-Finally, wrap your tabbed interface using `basicTabs` as a block helper:
+Finally, wrap your content with the `basicTabs` block helper:
 
 ```handlebars
 <template name="myTemplate">
