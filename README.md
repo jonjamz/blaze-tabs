@@ -5,8 +5,9 @@ Build any tabbed interface:
 * *really easily*.
 * *with custom templates*.
 * *with router integration*.
+* *and sticky tab states*.
 
-All instances of tabbed interfaces will be self-contained and individually reactive.
+All instances of tabbed interfaces will be self-contained and individually reactive. When switching to a new tab, the content of the previous tab is preserved unless you explicitly clear it using the `onChange` callback.
 
 Install
 -------
@@ -31,7 +32,7 @@ ReactiveTabs.createInterface({
     console.log('[tabs] Tab has changed! Current tab:', slug);
     console.log('[tabs] Template instance calling onChange:', template);
   }
-})
+});
 ```
 
 Then, provide tabs like this in a parent template.
@@ -111,7 +112,7 @@ ReactiveTabs.createInterface({
   onChange: function (slug) {
     console.log('[tabs] Tab has changed:', slug);
   }
-})
+});
 ```
 
 View that template's source code, and note this:
@@ -195,7 +196,7 @@ ReactiveTabs.createInterface({
   onChange: function (slug, template) {
     console.log('[tabs] Tab has changed:', slug);
   }
-})
+});
 ```
 
 Now you can go...
