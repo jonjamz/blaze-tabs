@@ -6,3 +6,7 @@
   padding: 25px;
   box-sizing: border-box;
 }
+
+.basicTabs-container .tabs-content {
+  display: none;
+}
