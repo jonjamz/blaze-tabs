@@ -9,6 +9,8 @@ Build any tabbed interface:
 
 All instances of tabbed interfaces will be self-contained and individually reactive. When switching to a new tab, the content of the previous tab is preserved unless you explicitly clear it using the `onChange` callback.
 
+[View the Live Example](http://tabs-example.meteor.com)
+
 Install
 -------
 
