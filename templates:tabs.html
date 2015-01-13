@@ -3,7 +3,7 @@
 
     <ul class="tabs-list">
       {{#each tabs}}
-        <li class="tab-item {{activeTab slug}}">{{name}}</li>
+        <li class="tab-item {{isActiveTab slug}}">{{name}}</li>
       {{/each}}
     </ul>
     <div class="tabs-content-container">
@@ -23,7 +23,7 @@
 
     <ul class="tabs-list">
       {{#each tabs}}
-        <li class="tab-item {{activeTab slug}}">{{name}}</li>
+        <li class="tab-item {{isActiveTab slug}}">{{name}}</li>
       {{/each}}
     </ul>
     <div class="tabs-content-container">

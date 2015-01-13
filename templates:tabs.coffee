@@ -80,7 +80,7 @@
             renderCallbacks[slug].onRender(self)
 
       helpers = {
-        activeTab: (slug) ->
+        isActiveTab: (slug) ->
           if Template.instance().isActiveSlug(slug)
             return 'active'
 
