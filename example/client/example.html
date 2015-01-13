@@ -1,0 +1,61 @@
+<head>
+  <title>example</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Testing the <a href="https://github.com/meteortemplates/tabs">templates:tabs</a> package!</h1>
+
+    <hr>
+
+    <p class="lead">
+      The below demonstration uses the
+      <strong><a href="https://github.com/meteortemplates/tabs/blob/master/templates:tabs.html#L1-L15">basicTabs</a></strong>
+      example included with the package.
+      Check out the
+      <strong><a href="https://github.com/meteortemplates/tabs">docs</a></strong>
+      for more features and capabilities.
+    </p>
+
+    <div class="well">
+      {{> myTabbedInterface}}
+    </div>
+
+  </div>
+</body>
+
+<template name="myTabbedInterface">
+
+  {{#basicTabs tabs=tabs}}
+
+    <div>
+
+      <p>Here's some content for the <strong>People</strong> tab.</p>
+      <p>Add text into the below input, click a different tab, and then come back to this one.</p>
+      <p>You'll see how the tab state is sticky.</p>
+      <input type="text" class="form-control" placeholder="Type some names of people.">
+
+    </div>
+
+    <div>
+
+      <p>Here's some content for the <strong>Places</strong> tab.</p>
+      <p>Add text into the below input, click a different tab, and then come back to this one.</p>
+      <p>You'll see how the tab state is sticky.</p>
+      <input type="text" class="form-control" placeholder="Type some names of places.">
+
+    </div>
+
+    <div>
+
+      <p>Here's some content for the <strong>Things</strong> tab.</p>
+      <p>Add text into the below input, click a different tab, and then come back to this one.</p>
+      <p>You'll see how the tab state is sticky.</p>
+      <input type="text" class="form-control" placeholder="Type some names of things.">
+
+    </div>
+
+  {{/basicTabs}}
+
+</template>

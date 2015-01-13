@@ -1,0 +1,8 @@
+.basicTabs-container .tabs-content-container {
+  background: #FFF;
+  border-radius: 6px;
+  border-top: 0;
+  margin-top: -9px;
+  padding: 25px;
+  box-sizing: border-box;
+}
