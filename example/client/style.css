@@ -7,6 +7,6 @@
   box-sizing: border-box;
 }
 
-.basicTabs-container .tabs-content {
+.basicTabs-container .tabs-content-container > div {
   display: none;
 }
