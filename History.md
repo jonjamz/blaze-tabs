@@ -1,3 +1,15 @@
+2.1.0
+=====
+
+* Add `tabContent` block helper to wrap tab content areas.
+  * Removes the need to use jQuery to show/hide tab content.
+  * Allows Blaze logic to be used in tabbed interface content block, for example to control permissions. Before, this would
+    sometimes cause a race condition that would run the jQuery to add attributes to tab content containers before they rendered.
+  * Tab content areas wrapped in `tabContent` can be defined out-of-order and still work properly.
+  * The simpler `<div>` based content areas are still supported.
+* Support passing interface-level context into tabs content block.
+* Update example code and docs.
+
 2.0.0
 =====
 
