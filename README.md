@@ -193,7 +193,7 @@ Follow this model:
     </ul>
 
     <!-- Here's where the active tab's content will be displayed. -->
-    <!-- Make sure you include the entire snippet below. -->
+    <!-- Make sure you include the entire snippet below (with context). -->
     <div class="tabs-content-container">
       {{> UI.contentBlock
           context=__context__
