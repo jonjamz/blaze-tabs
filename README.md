@@ -75,29 +75,35 @@ Finally, wrap your content with the `basicTabs` block helper:
   <!-- Use `name` to add a custom class to the outer container -->
   {{#basicTabs name="" tabs=tabs}}
     <!--
-      Wrap each tabbed section in a blank `<div></div>`.
-      Sections must correspond with the order of the tabs you specified.
+      There are two ways to define content for your tabs:
+
+      1. Wrap each tabbed section in a blank `<div></div>`.
+         Sections must correspond with the order of the tabs you specified.
+
+      2. Wrap each tabbed section in the provided block helper (RECOMMENDED!).
+         `{{#tabContent slug="nameOfCorrespondingSlug"}} ... {{/tabContent}}`
+         These can be defined in any order you like.
     -->
-    <div>
+    {{#tabContent slug="people"}}
       <h2>People</h2>
       <button class="add-people">
         Add People
       </button>
-    </div>
+    {{/tabContent}}
 
-    <div>
+    {{#tabContent slug="places"}}
       <h2>Places</h2>
       <button class="add-places">
         Add Places
       </button>
-    </div>
+    {{/tabContent}}
 
-    <div>
+    {{#tabContent slug="things"}}
       <h2>Things</h2>
       <button class="add-things">
         Add Things
       </button>
-    </div>
+    {{/tabContent}}
 
   {{/basicTabs}}
 
@@ -120,8 +126,13 @@ ReactiveTabs.createInterface({
 View that template's source code, and note this:
 
 ```handlebars
-{{trackTabs tabs}}
-{{trackActiveTab activeTab}}
+{{#if activeTab}}
+  {{trackActiveTab activeTab}}
+{{/if}}
+
+{{#if tabs}}
+  {{trackTabs tabs}}
+{{/if}}
 ```
 
 These helpers allow us to sync data from the parent template with internal data in the tabbed interface.
@@ -151,10 +162,7 @@ Here's what you need to change to work with dynamic tabs:
 
 * Instead of using a normal array for your `tabs` helper, use a [ReactiveArray](https://github.com/meteortemplates/array/) instance.
 * At the top of your tabbed interface template, add `{{trackTabs tabs}}` (see below).
-* Consider separating your tab content into separate templates, named by slug, and using [Template.dynamic](http://docs.meteor.com/#/full/template_dynamic).
-* If you don't add reactivity to your tab content that somehow syncs it with the state of your `tabs` array, you'll need to manually update the DOM *before* you change the value of the tab array.
-
-> If easier dynamic tabs becomes a much-requested feature, we can optimize the package more for that use.
+* Make sure you're wrapping your tab content areas using `{{#tabContent slug="nameOfCorrespondingSlug"}}` rather than a blank `<div>`.
 
 #### Roll your own template
 
@@ -169,8 +177,13 @@ Follow this model:
   <div class="yourTabbedInterface-container">
 
     <!-- These are optional if you want to track parent data (see above). -->
-    {{trackTabs tabs}}
-    {{trackActiveTab activeTab}}
+    {{#if activeTab}}
+      {{trackActiveTab activeTab}}
+    {{/if}}
+
+    {{#if tabs}}
+      {{trackTabs tabs}}
+    {{/if}}
 
     <!-- You can put the tabs anywhere and style them however you want! -->
     <ul class="tabs-list">
@@ -180,8 +193,11 @@ Follow this model:
     </ul>
 
     <!-- Here's where the active tab's content will be displayed. -->
+    <!-- Make sure you include the entire snippet below. -->
     <div class="tabs-content-container">
-      {{> UI.contentBlock}}
+      {{> UI.contentBlock
+          context=__context__
+      }}
     </div>
 
   </div>
