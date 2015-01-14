@@ -1,3 +1,8 @@
+2.1.1-2.1.2
+===========
+
+* Update package.js to fix example template loading and limit files to client-side.
+
 2.1.0
 =====
 
