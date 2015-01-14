@@ -14,9 +14,9 @@ Package.onUse(function(api) {
     'coffeescript',
     'templates:array@1.0.0'
   ], 'client');
-  api.addFiles('templates:tabs.coffee');
-  api.addFiles('templates:tabs.css');
-  api.addFiles('templates:tabs.html');
+  api.addFiles('templates:tabs.coffee', 'client');
+  api.addFiles('templates:tabs.css', 'client');
+  api.addFiles('templates:tabs.html', 'client');
 });
 
 Package.onTest(function(api) {
