@@ -9,30 +9,30 @@ Build any tabbed interface:
 
 #### Features
 
-**Instance-scoped**
+**Instance-scoped.**
 
 All instances of tabbed interfaces are self-contained and individually reactive.
 
-**Sticky state**
+**Sticky state.**
 
 When switching to a new tab, the content of the previous tab is preserved.
 
-**Callbacks with access to instance context**
+**Callbacks with access to instance context.**
 
 Specify functions to run when things happen, using the `onChange` or `onRender` callbacks.
 Easily integrate with routers.
 
-**Active tab hook**
+**Active tab hook.**
 
 Specify the currently active tab from a template helper if you want--just pass the slug into the tabs block.
 
-**Dynamic tabs support**
+**Dynamic tabs support.**
 
 Tabs are provided using a template helper. 
 If you change the tabs in that helper in a way that triggers a reactive re-run, 
 your tabs block will respond to the change and handle updating the currently active tab for you.
 
-**Doesn't break normal Blaze functionality**
+**Doesn't break normal Blaze functionality.**
 
 Within a tabs block, template logic will work as expected. Just make sure to use the `{{#tabsContent}}` blocks to wrap your tabbed content areas.
 
