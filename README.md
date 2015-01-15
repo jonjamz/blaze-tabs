@@ -7,7 +7,7 @@ Build any tabbed interface:
 * *with router integration*.
 * *and sticky tab states*.
 
-#### Features
+### Features
 
 **Instance-scoped.**
 
@@ -36,7 +36,7 @@ your tabs block will respond to the change and handle updating the currently act
 
 Within a tabs block, template logic will work as expected. Just make sure to use the `{{#tabsContent}}` blocks to wrap your tabbed content areas.
 
-#### Example
+### Example
 
 [View the Live Example](http://tabs-example.meteor.com)
 
