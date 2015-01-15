@@ -15,7 +15,7 @@ All instances of tabbed interfaces are self-contained and individually reactive.
 
 **Sticky state**
 
-When switching to a new tab, the content of the previous tab is preserved unless you explicitly clear it.
+When switching to a new tab, the content of the previous tab is preserved.
 
 **Callbacks with access to instance context**
 
