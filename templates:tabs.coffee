@@ -25,13 +25,11 @@
         check(self.data.activeTab, Match.Optional(String))
 
         # Init--set first tab if no specified active tab
-        if self.data.activeTab
-          activeTab = {slug: self.data.activeTab}
-        else
+        (self.data.activeTab && activeTab = {slug: self.data.activeTab}) ||
           activeTab = self.data.tabs[0]
 
         # Set up reactive data structures
-        self._tabs = new ReactiveArray(self.data.tabs)
+        self._tabs = new Blaze.ReactiveVar(self.data.tabs)
         self._activeTab = new Blaze.ReactiveVar(activeTab)
 
         # Set tabs--reactive
@@ -42,13 +40,11 @@
         # Set active tab--takes a full tab object or a slug
         self.setActiveTab = (tab) ->
           if Match.test(tab, String)
-            tab = {slug: tab}
-
-            self._activeTab.set(tab)
+            self._activeTab.set({slug: tab})
 
         # See if a slug is the currently active one
         self.isActiveSlug = (slug) ->
-          self._activeTab.get()?.slug is slug
+          return self._activeTab.get()?.slug is slug
 
       rendered = ->
         self = this
@@ -57,6 +53,18 @@
 
         self.autorun ->
           tabs = self._tabs.get()
+
+          # Reset active tab if it's no longer one of the tabs
+          Tracker.nonreactive ->
+            activeTab = self._activeTab.get()
+            contains = false
+            for tab in tabs
+              if tab.slug is activeTab.slug
+                contains = true
+            if !contains
+              self._activeTab.set(tabs[0])
+
+          # Support `<div></div>` containers using jQuery
           for tab, i in tabs
 
             # Register onRender callbacks by slug
@@ -101,7 +109,6 @@
           if Template.instance().isActiveSlug(slug)
             return 'active'
 
-        # Use these trackers if you want to reactively change tabs/activeTab from the outside
         trackActiveTab: (activeTab) ->
           Template.instance().setActiveTab(activeTab)
 

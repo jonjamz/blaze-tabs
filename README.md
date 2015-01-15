@@ -7,7 +7,30 @@ Build any tabbed interface:
 * *with router integration*.
 * *and sticky tab states*.
 
-All instances of tabbed interfaces will be self-contained and individually reactive. When switching to a new tab, the content of the previous tab is preserved unless you explicitly clear it using the `onChange` callback.
+#### Features
+
+*Instance-scoped*
+
+All instances of tabbed interfaces will be self-contained and individually reactive.
+
+*Sticky state*
+
+When switching to a new tab, the content of the previous tab is preserved unless you explicitly clear it using the `onChange` or `onRender` callbacks.
+
+*Active tab hook*
+
+Specify the currently active tab from a template helper if you want--just pass the slug into the tabs block.
+
+*Dynamic tabs support*
+
+Tabs are provided using a template helper. If you change the tabs in that helper in a way that triggers a reactive re-run, your tabs block
+will respond automatically to the change and handle updating the currently active tab automatically.
+
+*Doesn't break normal Blaze functionality*
+
+Within a tabs block, template logic will work as expected. Just make sure to use the `{{#tabsContent}}` blocks to wrap your tabbed content areas.
+
+#### Example
 
 [View the Live Example](http://tabs-example.meteor.com)
 
@@ -81,7 +104,7 @@ Finally, wrap your content with the `basicTabs` block helper:
          Sections must correspond with the order of the tabs you specified.
 
       2. Wrap each tabbed section in the provided block helper (RECOMMENDED!).
-         `{{#tabContent slug="nameOfCorrespondingSlug"}} ... {{/tabContent}}`
+         `{{#tabContent slug="nameOfSlug"}} ... {{/tabContent}}`
          These can be defined in any order you like.
     -->
     {{#tabContent slug="people"}}
@@ -130,9 +153,7 @@ View that template's source code, and note this:
   {{trackActiveTab activeTab}}
 {{/if}}
 
-{{#if tabs}}
-  {{trackTabs tabs}}
-{{/if}}
+{{trackTabs tabs}}
 ```
 
 These helpers allow us to sync data from the parent template with internal data in the tabbed interface.
@@ -160,9 +181,8 @@ Usually, you never need to update your array of tabs. But if you do, ReactiveTab
 
 Here's what you need to change to work with dynamic tabs:
 
-* Instead of using a normal array for your `tabs` helper, use a [ReactiveArray](https://github.com/meteortemplates/array/) instance.
-* At the top of your tabbed interface template, add `{{trackTabs tabs}}` (see below).
-* Make sure you're wrapping your tab content areas using `{{#tabContent slug="nameOfCorrespondingSlug"}}` rather than a blank `<div>`.
+* At the top of your tabbed interface template, but below any `trackActiveTab` expression, add `{{trackTabs tabs}}` (see below).
+* Make sure you're wrapping your tab content areas using `{{#tabContent slug="nameOfSlug"}}` rather than a blank `<div>`.
 
 #### Roll your own template
 
@@ -181,9 +201,7 @@ Follow this model:
       {{trackActiveTab activeTab}}
     {{/if}}
 
-    {{#if tabs}}
-      {{trackTabs tabs}}
-    {{/if}}
+    {{trackTabs tabs}}
 
     <!-- You can put the tabs anywhere and style them however you want! -->
     <ul class="tabs-list">

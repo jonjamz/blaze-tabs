@@ -1,3 +1,13 @@
+2.1.3
+=====
+
+* Fix dynamic tab tracking.
+  * When the array of tabs changes, set the active tab to the first tab in the array if the existing active tab isn't in
+    the new array.
+* Remove dependency on `ReactiveArray` and use `Blaze.ReactiveVar` instead.
+* Remove `{{#if tabs}}` expression from `trackTabs` in `dynamicTabs` template--of course there will be tabs.
+* Update docs.
+
 2.1.1-2.1.2
 ===========
 
