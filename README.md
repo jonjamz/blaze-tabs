@@ -30,7 +30,8 @@ Specify the currently active tab from a template helper if you want--just pass t
 
 Tabs are provided using a template helper. 
 If you change the tabs in that helper in a way that triggers a reactive re-run, 
-your tabs block will respond to the change and handle updating the currently active tab for you.
+your tabs block will respond to the change.
+If the last-active tab is no longer available, a new tab will be automatically selected.
 
 **Doesn't break normal Blaze functionality.**
 
