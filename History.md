@@ -1,3 +1,8 @@
+2.1.4
+=====
+
+* Try to fix docs display on Atmosphere (#6).
+
 2.1.3
 =====
 
