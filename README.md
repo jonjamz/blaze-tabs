@@ -47,7 +47,7 @@ Install
 
 `meteor add templates:tabs`
 
-This package works on the client-side only!
+This package works on the client-side only.
 
 Usage
 -----
