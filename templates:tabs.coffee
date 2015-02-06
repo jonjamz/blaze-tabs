@@ -87,8 +87,8 @@
           ($ self.find("[data-tab='#{slug}']")).show()
 
           # Call render callback for this slug
-          if renderCallbacks[slug]?.onRender?
-            renderCallbacks[slug].onRender(self)
+          if renderCallbacks[slug]?
+            renderCallbacks[slug](self)
 
       helpers = {
 
