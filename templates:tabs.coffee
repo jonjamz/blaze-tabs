@@ -88,7 +88,7 @@
 
           # Call render callback for this slug
           if renderCallbacks[slug]?
-            renderCallbacks[slug](self)
+            renderCallbacks[slug](slug, self)
 
       helpers = {
 

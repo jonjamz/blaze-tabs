@@ -1,3 +1,8 @@
+2.2.0
+=====
+
+* Pass slug into onRender as the first argument, just like it's passed into onChange.
+
 2.1.5
 =====
 
