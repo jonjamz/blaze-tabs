@@ -77,7 +77,7 @@ Template.myTemplate.helpers({
     return [
       { name: 'People', slug: 'people' },
       { name: 'Places', slug: 'places' },
-      { name: 'Things', slug: 'things', onRender: function(template) {
+      { name: 'Things', slug: 'things', onRender: function(slug, template) {
         // This callback runs every time this specific tab's content renders.
         // As with `onChange`, the `template` instance is unique per block helper.
         alert("[tabs] Things has been rendered!");
