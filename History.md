@@ -1,3 +1,8 @@
+2.2.1
+=====
+
+* Remove text highlighting in the CSS for the default tabs.
+
 2.2.0
 =====
 
