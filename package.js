@@ -1,7 +1,7 @@
 Package.describe({
   name: 'templates_tabs',
   summary: 'Reactive tabbed interfaces compatible with routing.',
-  version: '2.2.1',
+  version: '2.2.2',
   git: 'https://github.com/meteortemplates/tabs.git'
 });
 
