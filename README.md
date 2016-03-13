@@ -29,8 +29,8 @@ Specify the currently active tab from a template helper if you want--just pass t
 
 **Dynamic tabs support.**
 
-Tabs are provided using a template helper. 
-If you change the tabs in that helper in a way that triggers a reactive re-run, 
+Tabs are provided using a template helper.
+If you change the tabs in that helper in a way that triggers a reactive re-run,
 your tabs block will respond to the change.
 If the last-active tab is no longer available, a new tab will be automatically selected.
 
@@ -273,16 +273,17 @@ These block helpers require an array of tabs to be passed into them:
 
 Each tab in the array exists as an object with the following properties and methods:
 
-Field     | Type       | Required
-:---------|:-----------|:---------
-name      | *String*   | **Yes**
-slug      | *String*   | **Yes**
-onRender  | *Function* | No
+Field     | Type       | Required | Description
+:---------|:-----------|:---------|:----------------------
+name      | *String*   | **Yes**  | Title of the tab
+slug      | *String*   | **Yes**  | Tab unique identifier
+onRender  | *Function* | No       | Callback function
+class     | *String*   | No       | Custom CSS class name
 
 ```javascript
 var tabs = [
   { name: 'People', slug: 'people' },
-  { name: 'Places', slug: 'places' },
+  { name: 'Places', slug: 'places', class: 'myClass' },
   { name: 'Things', slug: 'things', onRender: function() {} }
 ];
 ```
