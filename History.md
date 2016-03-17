@@ -1,3 +1,9 @@
+2.2.2
+=====
+
+* Add Windows support.
+* Add support for custom classes.
+
 2.2.1
 =====
 
