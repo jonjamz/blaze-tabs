@@ -16,6 +16,7 @@ Package.onUse(function(api) {
   api.addFiles('templates_tabs.html', 'client');
   api.addFiles('templates_tabs.coffee', 'client');
   api.addFiles('templates_tabs.css', 'client');
+  api.export('ReactiveTabs', 'client');
 });
 
 Package.onTest(function(api) {
