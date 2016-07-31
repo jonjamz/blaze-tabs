@@ -1,3 +1,8 @@
+2.3.0
+=====
+
+* Export `ReactiveTabs` to support ES6 modules.
+
 2.2.2
 =====
 
