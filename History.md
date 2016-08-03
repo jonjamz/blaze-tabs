@@ -1,3 +1,8 @@
+2.3.1
+=====
+
+* Use inline tab hiding to prevent issues with `#each`.
+
 2.3.0
 =====
 
