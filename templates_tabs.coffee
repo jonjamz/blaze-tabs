@@ -21,7 +21,7 @@
 
       created = ->
         self = this
-        check(self.data.tabs, Array)
+        check(self.data.tabs, [Match.Any])
         check(self.data.activeTab, Match.Optional(String))
 
         # Init--set first tab if no specified active tab
